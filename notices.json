@@ -1,0 +1,148 @@
+{
+  "title": "利用OSS・AIモデルライセンスおよび非商用利用に関する注意事項",
+  "summary": [
+    "本ギャラリーで公開している AI 生成 3D モデルは、原則として【非商用・個人検証・研究用途限定】として扱ってください。",
+    "特にモンスター・妖怪および一部獣人に使用している自動リギング機構「RigAnything」は Adobe Research License（非商用研究用途のみ・商用製品への組み込みや商用利用禁止）の制約を受けます。",
+    "2D/3D生成モデル（Krea 2 Turbo / Meta DINOv3 / FLUX.2 VAE / Idol 等）もそれぞれ個別の利用条件（条件付きコミュニティ規約・軍事/違法用途制限等）を持つため、万一商用利用を検討する場合は各モデルの最新ライセンスおよび著作権リスクを別途ご確認ください。",
+    "純粋な Blender Python コード生成アセット（blender_code ルート）は AI モデルの重みを経由していません（Blender 本体は GPL-3.0 ですが、出力された GLB アセット自体には伝播しません）。"
+  ],
+  "tiers": {
+    "noncommercial_research": {
+      "short": "非商用・研究限定",
+      "label": "非商用・研究用途限定 (RigAnything / Adobe Research License)",
+      "detail": "RigAnything（Adobe Research License: 非商用研究用途のみ）でボーン・スキニングを生成したアセットです。個人学習・研究開発・非商用デモ用途に限り使用し、商用製品・収益化コンテンツへの利用や再配布は避けてください。"
+    },
+    "ai_generated_restricted": {
+      "short": "原則非商用・規約要確認",
+      "label": "原則非商用・各種モデル規約要確認 (Krea 2 / DINOv3 / Idol3D)",
+      "detail": "Krea 2 Turbo（Krea 2 Community License）・Meta DINOv3（用途制限付き独自規約）・FLUX.2 VAE・Idol3D 等を経由して生成されたアセットです。個人鑑賞・検証目的の非商用利用を前提とし、商用利用時は各ベースモデル規約を必ず個別に精査してください。"
+    },
+    "blender_code": {
+      "short": "Blenderコード生成",
+      "label": "Blender Python コード生成 (AIモデル非経由)",
+      "detail": "プロシージャル Blender Python (bmesh) スクリプトのみで構築されたアセットで、生成AIの重みは通過していません。（Blender 本体の GPL-3.0 は出力ファイルには伝播しませんが、個別アセット固有のモチーフ/デザイン確認は利用者の責任で行ってください。）"
+    }
+  },
+  "components": [
+    {
+      "name": "RigAnything",
+      "role": "モンスター・クリーチャー向け自己回帰スケルトン＆スキニング推論",
+      "provider": "UC San Diego / Adobe Research",
+      "license": "Adobe Research License（非商用研究限定）",
+      "commercial_note": "非商用研究用途のみ許可。商用製品開発・営利配布・商用サービス組み込みは禁止。",
+      "url": "https://github.com/Isabella98Liu/RigAnything"
+    },
+    {
+      "name": "Krea 2 Turbo (krea2_turbo_bf16)",
+      "role": "8-step 高速 2D キャラクター/オブジェクトコンセプト画像生成",
+      "provider": "Krea AI",
+      "license": "Krea 2 Community License（独自・条件付き）",
+      "commercial_note": "独自規約（年間売上・席数上限、派生名指定、利用制限条項等あり）。原則非商用扱いを推奨。",
+      "url": "https://www.krea.ai/"
+    },
+    {
+      "name": "Meta DINOv3 (dino_v3_vit_h)",
+      "role": "Idol3D 条件付け用ビジョンエンコーダ (ViT-H+/16)",
+      "provider": "Meta Platforms, Inc.",
+      "license": "Meta DINOv3 License（独自規約・非OSI）",
+      "commercial_note": "軍事・兵器・監視用途等の明確なエンドユース制限および再配布時の規約添付義務あり。",
+      "url": "https://huggingface.co/VAST-AI/TripoSplat"
+    },
+    {
+      "name": "FLUX.2 VAE (flux2-vae)",
+      "role": "TripoSplat / Idol3D 条件付け用潜在 VAE",
+      "provider": "Black Forest Labs",
+      "license": "Apache-2.0 / FLUX 規約要確認",
+      "commercial_note": "公開元ディストリビューション（TripoSplat / FLUX.2 dev 系）により規約が異なるため要確認。",
+      "url": "https://blackforestlabs.ai/"
+    },
+    {
+      "name": "Idol / ComfyUI-Idol",
+      "role": "単一画像からの 3D Gaussian Splatting 復元・メッシュ化パイプライン",
+      "provider": "Speridlabs / Nynxz",
+      "license": "Apache License 2.0",
+      "commercial_note": "コード・Idol 重み自体は Apache-2.0 だが、必須依存する DINOv3 / FLUX.2 VAE 側の制限が優先。",
+      "url": "https://github.com/Nynxz/ComfyUI-Idol"
+    },
+    {
+      "name": "TripoSplat",
+      "role": "3D Gaussian Splatting アーキテクチャ基盤",
+      "provider": "VAST AI Research",
+      "license": "MIT License",
+      "commercial_note": "MIT License（コピーライト表記維持）。",
+      "url": "https://github.com/VAST-AI-Research/TripoSplat"
+    },
+    {
+      "name": "Qwen3-VL & Qwen-Image VAE",
+      "role": "日本語プロンプト理解テキストエンコーダ (qwen3vl_4b) / 2D VAE",
+      "provider": "Qwen Team / Alibaba Cloud",
+      "license": "Apache License 2.0",
+      "commercial_note": "Apache-2.0 準拠。",
+      "url": "https://github.com/QwenLM/Qwen3-VL"
+    },
+    {
+      "name": "BiRefNet",
+      "role": "2D画像からの高精度前景切り抜き（背景除去）",
+      "provider": "ZhengPeng7",
+      "license": "MIT License",
+      "commercial_note": "MIT License。",
+      "url": "https://github.com/ZhengPeng7/BiRefNet"
+    },
+    {
+      "name": "Make-It-Animatable (MIA) / GameMeshTools",
+      "role": "人型 22 ボーン Mixamo 互換自動リギング & メッシュ後処理ノード",
+      "provider": "Zhiyang Guo et al. / ComfyUI-GameMeshTools",
+      "license": "MIT License（コード）",
+      "commercial_note": "実装コードは MIT。チェックポイント重みや Mixamo 互換スケルトン規約は利用形態に応じて要確認。",
+      "url": "https://github.com/jasondunham/Make-It-Animatable"
+    },
+    {
+      "name": "MediaPipe Face Landmarker",
+      "role": "人型キャラクター顔ランドマーク検出（2D 顔投影の基準点抽出）",
+      "provider": "Google LLC (ComfyUI 実装経由)",
+      "license": "Apache License 2.0",
+      "commercial_note": "Apache-2.0 準拠。",
+      "url": "https://github.com/google-ai-edge/mediapipe"
+    },
+    {
+      "name": "ComfyUI",
+      "role": "2D/3D AI ワークフロー実行・優先度付きキュー基盤",
+      "provider": "Comfyanonymous & Contributors",
+      "license": "GNU General Public License v3.0 (GPL-3.0)",
+      "commercial_note": "実行ツール自体は GPL-3.0 だが、生成出力物自体には GPL は伝播しない。",
+      "url": "https://github.com/comfyanonymous/ComfyUI"
+    },
+    {
+      "name": "Blender 5.x",
+      "role": "シーム結合・法線修正・Draco/WebP圧縮・LOD生成・EEVEE レンダリング",
+      "provider": "Blender Foundation",
+      "license": "GNU General Public License v3.0 (GPL-3.0)",
+      "commercial_note": "Blender 本体やアドオン連携スクリプト以外の出力データ（GLB/画像）は利用者のもの。",
+      "url": "https://www.blender.org/"
+    },
+    {
+      "name": "Three.js",
+      "role": "ブラウザ内 3D GLB レンダリング & スケルトンアニメーション表示",
+      "provider": "Three.js Authors",
+      "license": "MIT License",
+      "commercial_note": "ギャラリーに同梱・ライセンス表記維持。",
+      "url": "https://threejs.org/"
+    },
+    {
+      "name": "Google Draco",
+      "role": "GLB メッシュ圧縮およびブラウザ内 WASM デコード",
+      "provider": "Google LLC",
+      "license": "Apache License 2.0",
+      "commercial_note": "Apache-2.0 準拠。",
+      "url": "https://github.com/google/draco"
+    },
+    {
+      "name": "Python / Pillow / PyTorch / NumPy / SciPy / trimesh",
+      "role": "サーバー・リサイズ・数値解析・メッシュ処理ライブラリ群",
+      "provider": "各 OSS コミュニティ",
+      "license": "PSF / HPND / BSD-3-Clause / MIT",
+      "commercial_note": "いずれもパーミッシブ OSS ライセンス。",
+      "url": "https://www.python.org/"
+    }
+  ]
+}
